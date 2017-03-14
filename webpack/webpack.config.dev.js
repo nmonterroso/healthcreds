@@ -17,7 +17,7 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     hot: true,
-    host: '0.0.0.0',
+    host: 'localhost',
     contentBase: resolve(__dirname, '../assets'),
     publicPath: '/',
     historyApiFallback: true,
