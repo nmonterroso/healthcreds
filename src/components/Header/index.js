@@ -1,13 +1,53 @@
 import React from 'react'
+import AppBar from 'material-ui/AppBar'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
+import { connect } from 'react-redux'
 
-import { Title } from '../Styled'
-import Github from './Github'
+export default connect()(class Header extends React.Component {
+  state = {
+    menuOpen: false,
+  }
 
-const Header = () => (
-  <div>
-    <Title>redux-react-starter</Title>
-    <Github />
-  </div>
-)
+  openDialog = () => {
+    this.setState({ menuOpen: true })
+  }
 
-export default Header
+  closeDialog = () => {
+    this.setState({ menuOpen: false })
+  }
+
+  onMenuItemClick = () => {
+    this.closeDialog();
+  }
+
+  onDrawerRequestChange = (open) => {
+    if (open) {
+      this.openDialog()
+    } else {
+      this.closeDialog()
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <AppBar
+          title="Health Creds"
+          onLeftIconButtonTouchTap={this.openDialog}
+        />
+        <Drawer
+          open={this.state.menuOpen}
+          docked={false}
+          onRequestChange={this.onDrawerRequestChange}
+        >
+          <MenuItem
+            onTouchTap={this.onMenuItemClick}
+          >
+            Hi
+          </MenuItem>
+        </Drawer>
+      </div>
+    )
+  }
+})
