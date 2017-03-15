@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import BurgerAndFriesIcon from './BurgerAndFriesIcon'
 import IceCreamIcon from './IceCreamIcon'
 import { userShape } from '../../reducers/user'
-import * as Styles from './styles'
+import * as styles from './styles'
 
 const stateToProps = state => ({ user: state.user })
 const mergeProps = stateProps => ({ costs: stateProps.user.costs })
@@ -17,7 +17,7 @@ const Container = styled.div`
   display: flex;
 `
 
-const Button = styled(Styles.IconButton)`
+const Button = styled(styles.IconButton)`
   flex-grow: 1;
 `
 
@@ -40,12 +40,12 @@ class Spend extends React.Component {
         <Button
           icon={<BurgerAndFriesIcon />}
           onTouchTap={this.onFullSpend}
-          style={Styles.raisedButtonStyle}
+          style={styles.raisedButtonStyle}
         />
         <Button
           icon={<IceCreamIcon />}
           onTouchTap={this.onSnackSpend}
-          style={Styles.raisedButtonStyle}
+          style={styles.raisedButtonStyle}
         />
       </Container>
     )

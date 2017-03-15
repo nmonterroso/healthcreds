@@ -1,15 +1,13 @@
 import React from 'react'
 import SvgIcon from 'material-ui/SvgIcon'
+import * as styles from './styles'
 
 const BurgerAndFriesIcon = () => (
   <SvgIcon
     width="94"
     height="64"
     viewBox="0 0 94 64"
-    style={{
-      width: 'auto',
-      height: '80%',
-    }}
+    style={styles.svgStyle}
   >
     <SvgIcon
       width="64"

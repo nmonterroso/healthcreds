@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import Spend from './Spend'
+import Earn from './Earn'
 
 const ActionItems = styled.div`
   margin: 1rem;
   padding: 0;
+  
   > * {
     margin-bottom: 1rem;
     
@@ -16,6 +18,7 @@ const ActionItems = styled.div`
 
 const ActionList = () => (
   <ActionItems>
+    <Earn />
     <Spend />
   </ActionItems>
 )

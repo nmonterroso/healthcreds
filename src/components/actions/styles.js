@@ -5,6 +5,11 @@ export const raisedButtonStyle = {
   height: '5rem',
 }
 
+export const svgStyle = {
+  width: 'auto',
+  height: '80%',
+}
+
 export const IconButton = styled(RaisedButton)`
   button > div > div {
     display: flex;
