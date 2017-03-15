@@ -2,14 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import Spend from './Spend'
 
-const ActionUnorderedList = styled.ul`
-  list-style-type: none;
+const ActionItems = styled.div`
   margin: 1rem;
   padding: 0;
-  li {
+  > * {
     margin-bottom: 1rem;
-    border-radius: .7rem;
-    padding: 0;
     
     &:last-child {
       margin-bottom: 0;
@@ -18,11 +15,9 @@ const ActionUnorderedList = styled.ul`
 `
 
 const ActionList = () => (
-  <ActionUnorderedList>
-    <li>
-      <Spend />
-    </li>
-  </ActionUnorderedList>
+  <ActionItems>
+    <Spend />
+  </ActionItems>
 )
 
 export default ActionList
