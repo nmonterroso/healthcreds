@@ -34,7 +34,9 @@ export default connect()(class Header extends React.Component {
       <div>
         <AppBar
           title="Health Creds"
-          onLeftIconButtonTouchTap={this.openDialog}
+          iconStyleLeft={{
+            display: 'none',
+          }}
         />
       </div>
     )
