@@ -36,17 +36,6 @@ export default connect()(class Header extends React.Component {
           title="Health Creds"
           onLeftIconButtonTouchTap={this.openDialog}
         />
-        <Drawer
-          open={this.state.menuOpen}
-          docked={false}
-          onRequestChange={this.onDrawerRequestChange}
-        >
-          <MenuItem
-            onTouchTap={this.onMenuItemClick}
-          >
-            Hi
-          </MenuItem>
-        </Drawer>
       </div>
     )
   }

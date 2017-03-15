@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Points from './Points'
 import Spend from './Spend'
 import Earn from './Earn'
 
@@ -18,6 +19,7 @@ const ActionItems = styled.div`
 
 const ActionList = () => (
   <ActionItems>
+    <Points />
     <Earn />
     <Spend />
   </ActionItems>
