@@ -8,7 +8,7 @@ const Container = styled.div`
 
 const Points = () => (
   <Container>
-    100
+    48
   </Container>
 )
 
