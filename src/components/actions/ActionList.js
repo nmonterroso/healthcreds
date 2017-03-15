@@ -10,6 +10,10 @@ const ActionUnorderedList = styled.ul`
     margin-bottom: 1rem;
     border-radius: .7rem;
     padding: 0;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 `
 

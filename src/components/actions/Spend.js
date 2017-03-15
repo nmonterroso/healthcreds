@@ -1,11 +1,11 @@
 import React from 'react'
 import _ from 'lodash'
 import styled from 'styled-components'
-import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
 import BurgerAndFriesIcon from './BurgerAndFriesIcon'
 import IceCreamIcon from './IceCreamIcon'
 import { userShape } from '../../reducers/user'
+import * as Styles from './styles'
 
 const stateToProps = state => ({ user: state.user })
 const mergeProps = stateProps => ({ costs: stateProps.user.costs })
@@ -17,19 +17,9 @@ const Container = styled.div`
   display: flex;
 `
 
-const Button = styled(RaisedButton)`
+const Button = styled(Styles.IconButton)`
   flex-grow: 1;
-  
-  button > div > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 `
-
-const raisedButtonStyle = {
-  height: '5rem',
-}
 
 class Spend extends React.Component {
   static propTypes = {
@@ -50,12 +40,12 @@ class Spend extends React.Component {
         <Button
           icon={<BurgerAndFriesIcon />}
           onTouchTap={this.onFullSpend}
-          style={raisedButtonStyle}
+          style={Styles.raisedButtonStyle}
         />
         <Button
           icon={<IceCreamIcon />}
           onTouchTap={this.onSnackSpend}
-          style={raisedButtonStyle}
+          style={Styles.raisedButtonStyle}
         />
       </Container>
     )
