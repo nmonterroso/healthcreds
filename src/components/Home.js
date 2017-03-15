@@ -1,23 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import ActionList from './actions/ActionList'
+import { userShape } from '../reducers/user'
 
-const select = state => ({ user: state.user })
+const stateToProps = state => ({ user: state.user })
+const mergeProps = stateProps => ({ userToken: stateProps.user.token })
+const options = {
+  areStatesEqual: (prev, next) => prev.token === next.token,
+}
 
-export default connect(select)(class Home extends React.Component {
-  static propTypes = {
-    user: React.PropTypes.shape({
-      token: React.PropTypes.string,
-    }).isRequired,
+const Home = ({ userToken }) => {
+  if (false && !userToken) {
+    return (<Redirect to="/login" />)
   }
 
-  render() {
-    if (false && !this.props.user.token) {
-      return (<Redirect to="/login" />)
-    }
+  return (
+    <ActionList />
+  )
+}
 
-    return (
-      <div>hi</div>
-    )
-  }
-})
+Home.propTypes = {
+  userToken: userShape.token,
+}
+
+export default connect(stateToProps, null, mergeProps, options)(Home)

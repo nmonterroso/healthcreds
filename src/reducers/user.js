@@ -1,15 +1,34 @@
+import React from 'react'
 import { actionTypes as types } from '../constants'
 
-const user = (state = {}, action) => {
+export const userShape = {
+  token: React.PropTypes.string,
+  name: React.PropTypes.string,
+  costs: React.PropTypes.shape({
+    full: React.PropTypes.number,
+    snack: React.PropTypes.number,
+  }),
+}
+
+export const initialState = {
+  token: null,
+  name: null,
+  costs: {
+    full: 5,
+    snack: 3,
+  },
+}
+
+export default function user(state = initialState, action) {
   switch (action.type) {
     case types.SIGNUP_SUCCESS:
     case types.LOGIN_SUCCESS:
       return action.data
     case types.LOGIN_FAILURE:
-      return {}
+      console.log(state)
+      return state
     default:
+      console.log(state)
       return state
   }
 }
-
-export default user
