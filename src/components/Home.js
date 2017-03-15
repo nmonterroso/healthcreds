@@ -2,16 +2,22 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { Message, Blue } from './Styled'
+const select = state => ({ user: state.user })
 
-const Home = ({ user }) => (
-  user.token
-    ? <Message>{'You\'re logged in as '}<Blue>{user.email}</Blue></Message>
-    : <Redirect to="/login" />
-)
+export default connect(select)(class Home extends React.Component {
+  static propTypes = {
+    user: React.PropTypes.shape({
+      token: React.PropTypes.string,
+    }).isRequired,
+  }
 
-Home.propTypes = {
-  user: React.PropTypes.shape({}).isRequired,
-}
+  render() {
+    if (false && !this.props.user.token) {
+      return (<Redirect to="/login" />)
+    }
 
-export default connect(state => ({ user: state.user }))(Home)
+    return (
+      <div>hi</div>
+    )
+  }
+})

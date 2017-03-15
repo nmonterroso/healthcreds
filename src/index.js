@@ -10,8 +10,8 @@ import App from './components/App'
 import { store } from './store'
 
 if (process.env.NODE_ENV === 'production') {
-  injectTapEventPlugin();
-  Offline.install();
+  injectTapEventPlugin()
+  Offline.install()
 }
 
 export const Root = () => (
