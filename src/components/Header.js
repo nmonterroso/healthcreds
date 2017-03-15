@@ -1,35 +1,23 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar'
-import Drawer from 'material-ui/Drawer'
-import MenuItem from 'material-ui/MenuItem'
 import { connect } from 'react-redux'
+import SettingsIcon from 'material-ui/svg-icons/action/settings'
+import IconButton from 'material-ui/IconButton'
 
 export default connect()(class Header extends React.Component {
-  state = {
-    menuOpen: false,
-  }
-
-  openDialog = () => {
-    this.setState({ menuOpen: true })
-  }
-
-  closeDialog = () => {
-    this.setState({ menuOpen: false })
-  }
-
-  onMenuItemClick = () => {
-    this.closeDialog();
-  }
-
-  onDrawerRequestChange = (open) => {
-    if (open) {
-      this.openDialog()
-    } else {
-      this.closeDialog()
-    }
+  onSettingsClicked = () => {
+    console.log('clicked the settings!')
   }
 
   render() {
+    const settingsIcon = (
+      <IconButton>
+        <SettingsIcon
+          onClick={this.onSettingsClicked}
+        />
+      </IconButton>
+    )
+
     return (
       <div>
         <AppBar
@@ -37,6 +25,7 @@ export default connect()(class Header extends React.Component {
           iconStyleLeft={{
             display: 'none',
           }}
+          iconElementRight={settingsIcon}
         />
       </div>
     )
