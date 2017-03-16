@@ -14,7 +14,7 @@ const Home = ({ userToken }) => {
 }
 
 Home.propTypes = {
-  userToken: React.PropTypes.string,
+  userToken: React.PropTypes.string.isRequired,
 }
 
 const stateToProps = state => ({ user: state.user })

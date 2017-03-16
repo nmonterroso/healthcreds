@@ -6,7 +6,7 @@ import IconButton from 'material-ui/IconButton'
 
 class Header extends React.Component {
   static propTypes = {
-    userToken: React.PropTypes.string,
+    userToken: React.PropTypes.string.isRequired,
   }
 
   onSettingsClicked = () => {
