@@ -38,6 +38,11 @@ module.exports = {
       title: 'redux-react-starter',
       template: '../webpack/template.html',
     }),
+    new webpack.EnvironmentPlugin({
+      'FIREBASE_API_KEY': 'AIzaSyDeQoYgFiwooVJc2vwtSLRnAtYczLf__IU',
+      'FIREBASE_AUTH_DOMAIN': 'localhost',
+      'FIREBASE_DB_URL': 'https://healthcreds.firebaseio.com/',
+    }),
   ],
   performance: { hints: false },
 }

@@ -51,5 +51,10 @@ module.exports = {
       },
       AppCache: false,
     }),
+    new webpack.EnvironmentPlugin({
+      'FIREBASE_API_KEY': 'AIzaSyDeQoYgFiwooVJc2vwtSLRnAtYczLf__IU',
+      'FIREBASE_AUTH_DOMAIN': 'healthcreds.firebaseapp.com',
+      'FIREBASE_DB_URL': 'https://healthcreds.firebaseio.com/',
+    }),
   ],
 }
