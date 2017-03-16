@@ -10,4 +10,9 @@ const actionTypes = {
   SPEND_CRED_FAILURE: 'SPEND_CRED_FAILURE',
 }
 
+export const spendTypes = {
+  FULL: 'FULL',
+  SNACK: 'SNACK',
+}
+
 export default actionTypes

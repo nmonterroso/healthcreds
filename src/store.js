@@ -2,7 +2,7 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import throttle from 'lodash/throttle'
 
-import rootReducer from './reducers'
+import rootReducer from './reducers/rootReducer'
 // import { loginWithToken } from './actions'
 import { saveState, loadState } from './helpers'
 

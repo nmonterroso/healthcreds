@@ -4,11 +4,10 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import BurgerAndFriesIcon from './BurgerAndFriesIcon'
 import IceCreamIcon from './IceCreamIcon'
-import { userShape } from '../../reducers/user'
 import * as styles from './styles'
 
-const stateToProps = state => ({ user: state.user })
-const mergeProps = stateProps => ({ costs: stateProps.user.costs })
+const stateToProps = state => ({ points: state.points })
+const mergeProps = stateProps => ({ costs: stateProps.points.costs })
 const options = {
   areStatesEqual: (prev, next) => _.isEqual(prev.costs, next.costs),
 }
@@ -23,7 +22,10 @@ const Button = styled(styles.IconButton)`
 
 class Spend extends React.Component {
   static propTypes = {
-    costs: userShape.costs,
+    costs: React.PropTypes.shape({
+      full: React.PropTypes.number,
+      snack: React.PropTypes.number,
+    }),
   }
 
   onFullSpend = () => {

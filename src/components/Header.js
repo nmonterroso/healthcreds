@@ -4,19 +4,27 @@ import { connect } from 'react-redux'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import IconButton from 'material-ui/IconButton'
 
-export default connect()(class Header extends React.Component {
+class Header extends React.Component {
+  static propTypes = {
+    userToken: React.PropTypes.string,
+  }
+
   onSettingsClicked = () => {
     console.log('clicked the settings!')
   }
 
   render() {
-    const settingsIcon = (
-      <IconButton>
-        <SettingsIcon
-          onClick={this.onSettingsClicked}
-        />
-      </IconButton>
-    )
+    let settingsIcon = null;
+
+    if (this.props.userToken) {
+      settingsIcon = (
+        <IconButton>
+          <SettingsIcon
+            onClick={this.onSettingsClicked}
+          />
+        </IconButton>
+      )
+    }
 
     return (
       <div>
@@ -30,4 +38,12 @@ export default connect()(class Header extends React.Component {
       </div>
     )
   }
-})
+}
+
+const stateToProps = state => ({ user: state.user })
+const mergeProps = stateProps => ({ userToken: stateProps.user.token })
+const options = {
+  areStatesEqual: (prev, next) => prev.token === next.token,
+}
+
+export default connect(stateToProps, null, mergeProps, options)(Header)
