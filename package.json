@@ -50,6 +50,7 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
+    "firebase": "^3.7.2",
     "lodash": "^4.17.4",
     "material-ui": "^0.17.1",
     "offline-plugin": "^4.5.5",
