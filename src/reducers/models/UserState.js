@@ -5,7 +5,7 @@ export const initialState = {
   name: null,
 }
 
-export default class User {
+export default class UserState {
   constructor(state) {
     this.state = state
   }
@@ -14,8 +14,8 @@ export default class User {
   isLoggedIn = () => this.state.isLoggedIn
   getName = () => this.state.name
 
-  withName = name => new User(Object.assign({}, this.state, { name }))
-  withIsLoggedIn = isLoggedIn => new User(Object.assign({}, this.state, { isLoggedIn }))
+  withName = name => new UserState(Object.assign({}, this.state, { name }))
+  withIsLoggedIn = isLoggedIn => new UserState(Object.assign({}, this.state, { isLoggedIn }))
 
   equals = other => _.isEqual(this.getState(), other.getState())
 }

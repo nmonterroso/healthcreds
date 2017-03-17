@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { login } from '../actions/user'
-import User from '../models/User'
+import UserState from '../reducers/models/UserState'
 
 const LoginForm = styled.form`
   display: flex;
@@ -22,7 +22,7 @@ const LoginButton = styled(RaisedButton)`
 
 class Login extends React.Component {
   static propTypes = {
-    user: React.PropTypes.instanceOf(User).isRequired,
+    user: React.PropTypes.instanceOf(UserState).isRequired,
     login: React.PropTypes.func.isRequired,
   }
 
@@ -73,12 +73,12 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
   {},
   ownProps,
   {
-    user: new User(stateProps.user),
+    user: new UserState(stateProps.user),
   },
   dispatchProps,
 )
 const options = {
-  areStatesEqual: (prev, next) => new User(prev).equals(new User(next)),
+  areStatesEqual: (prev, next) => new UserState(prev).equals(new UserState(next)),
 }
 
 export default connect(stateToProps, dispatchToProps, mergeProps, options)(Login)

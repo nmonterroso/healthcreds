@@ -3,11 +3,11 @@ import AppBar from 'material-ui/AppBar'
 import { connect } from 'react-redux'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import IconButton from 'material-ui/IconButton'
-import User from '../models/User'
+import UserState from '../reducers/models/UserState'
 
 class Header extends React.Component {
   static propTypes = {
-    user: React.PropTypes.instanceOf(User).isRequired,
+    user: React.PropTypes.instanceOf(UserState).isRequired,
   }
 
   onSettingsClicked = () => {
@@ -42,9 +42,9 @@ class Header extends React.Component {
 }
 
 const stateToProps = state => ({ user: state.user })
-const mergeProps = stateProps => ({ user: new User(stateProps.user) })
+const mergeProps = stateProps => ({ user: new UserState(stateProps.user) })
 const options = {
-  areStatesEqual: (prev, next) => new User(prev).equals(new User(next)),
+  areStatesEqual: (prev, next) => new UserState(prev).equals(new UserState(next)),
 }
 
 export default connect(stateToProps, null, mergeProps, options)(Header)

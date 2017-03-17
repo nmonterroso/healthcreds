@@ -1,5 +1,5 @@
 import actionTypes from '../constants/actions'
-import User, { initialState } from '../models/User'
+import User, { initialState } from './models/UserState'
 
 export default function user(state = initialState, action) {
   switch (action.type) {
