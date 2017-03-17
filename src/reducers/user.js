@@ -8,8 +8,8 @@ export default function user(state = initialState, action) {
         .withName(action.payload.name)
         .withIsLoggedIn(true)
         .getState()
-    case actionTypes.LOGIN_FAILURE:
-      return state
+    case actionTypes.LOGOUT_SUCCESS:
+      return new User(initialState)
     default:
       return state
   }

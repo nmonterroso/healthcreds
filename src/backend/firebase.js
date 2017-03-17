@@ -26,6 +26,10 @@ class FirebaseBackend {
         const name = loggedIn ? user.displayName : null
         return [loggedIn, name]
       })
+
+  logout = () =>
+    this.firebase.auth()
+      .signOut()
 }
 
 const initializePromise = new Promise((resolve) => {
