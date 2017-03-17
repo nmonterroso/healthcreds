@@ -15,3 +15,15 @@ export function login(username, password) {
       })
   }
 }
+
+export function restorePastSession() {
+  return (dispatch) => {
+    dispatch(createAction(actionTypes.RESTORE_SESSION_REQUEST))
+    return backend.restoreSession()
+      .then(([loggedIn, name]) => {
+        if (loggedIn) {
+          dispatch(createAction(actionTypes.LOGIN_SUCCESS, { name }))
+        }
+      })
+  }
+}
