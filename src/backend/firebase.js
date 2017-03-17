@@ -8,11 +8,6 @@ const config = {
 
 firebase.initializeApp(config)
 
-let initialLoadResolve = null
-const initializePromise = new Promise((resolve) => {
-  initialLoadResolve = resolve
-})
-
 class FirebaseBackend {
   constructor(firebase, initializePromise) {
     this.firebase = firebase
@@ -33,14 +28,17 @@ class FirebaseBackend {
       })
 }
 
-let authInitialized = false
-firebase.auth().onAuthStateChanged((user) => {
-  if (authInitialized) {
-    return
-  }
+const initializePromise = new Promise((resolve) => {
+  let authInitialized = false
 
-  authInitialized = true
-  initialLoadResolve(user)
+  firebase.auth().onAuthStateChanged((user) => {
+    if (authInitialized) {
+      return
+    }
+
+    authInitialized = true
+    resolve(user)
+  })
 })
 
 export default new FirebaseBackend(firebase, initializePromise)
