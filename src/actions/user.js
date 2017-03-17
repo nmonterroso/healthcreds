@@ -9,6 +9,9 @@ export function login(username, password) {
       .then((name) => {
         dispatch(createAction(actionTypes.LOGIN_SUCCESS, { name }))
       })
-      .catch(() => dispatch(createAction(actionTypes.LOGIN_FAILURE)))
+      .catch((e) => {
+        console.error('login failed', e)
+        dispatch(createAction(actionTypes.LOGIN_FAILURE))
+      })
   }
 }

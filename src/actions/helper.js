@@ -4,7 +4,7 @@ export function createAction(type, payload = null) {
   }
 
   if (payload) {
-    action[payload] = payload
+    action.payload = payload
   }
 
   return action

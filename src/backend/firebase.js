@@ -16,7 +16,7 @@ class FirebaseBackend {
   authenticate = (username, password) =>
     this.firebase.auth()
       .signInWithEmailAndPassword(username, password)
-      .then(({ user }) => user.name)
+      .then(user => user.displayName)
 }
 
 export default new FirebaseBackend(firebase)
