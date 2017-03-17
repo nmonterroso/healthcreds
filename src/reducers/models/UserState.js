@@ -1,9 +1,9 @@
-import _ from 'lodash'
+import Immutable from 'immutable'
 
-export const initialState = {
+export const initialState = Immutable.fromJS({
   isLoggedIn: false,
   name: null,
-}
+})
 
 export default class UserState {
   constructor(state) {
@@ -16,6 +16,4 @@ export default class UserState {
 
   withName = name => new UserState(Object.assign({}, this.state, { name }))
   withIsLoggedIn = isLoggedIn => new UserState(Object.assign({}, this.state, { isLoggedIn }))
-
-  equals = other => _.isEqual(this.getState(), other.getState())
 }

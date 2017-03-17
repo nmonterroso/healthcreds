@@ -20,8 +20,5 @@ Home.propTypes = {
 
 const stateToProps = state => ({ user: state.user })
 const mergeProps = stateProps => ({ user: new UserState(stateProps.user) })
-const options = {
-  areStatesEqual: (prev, next) => new UserState(prev).equals(new UserState(next)),
-}
 
-export default connect(stateToProps, null, mergeProps, options)(Home)
+export default connect(stateToProps, null, mergeProps)(Home)

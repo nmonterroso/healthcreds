@@ -77,8 +77,5 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
   },
   dispatchProps,
 )
-const options = {
-  areStatesEqual: (prev, next) => new UserState(prev).equals(new UserState(next)),
-}
 
-export default connect(stateToProps, dispatchToProps, mergeProps, options)(Login)
+export default connect(stateToProps, dispatchToProps, mergeProps)(Login)

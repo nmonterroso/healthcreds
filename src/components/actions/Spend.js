@@ -1,5 +1,4 @@
 import React from 'react'
-import _ from 'lodash'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import BurgerAndFriesIcon from './BurgerAndFriesIcon'
@@ -8,9 +7,6 @@ import * as styles from './styles'
 
 const stateToProps = state => ({ points: state.points })
 const mergeProps = stateProps => ({ costs: stateProps.points.costs })
-const options = {
-  areStatesEqual: (prev, next) => _.isEqual(prev.costs, next.costs),
-}
 
 const Container = styled.div`
   display: flex;
@@ -25,7 +21,7 @@ class Spend extends React.Component {
     costs: React.PropTypes.shape({
       full: React.PropTypes.number,
       snack: React.PropTypes.number,
-    }),
+    }).isRequired,
   }
 
   onFullSpend = () => {
@@ -54,4 +50,4 @@ class Spend extends React.Component {
   }
 }
 
-export default connect(stateToProps, null, mergeProps, options)(Spend)
+export default connect(stateToProps, null, mergeProps)(Spend)
