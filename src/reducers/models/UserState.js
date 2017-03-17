@@ -1,9 +1,13 @@
 import Immutable from 'immutable'
 
-export const initialState = Immutable.fromJS({
-  isLoggedIn: false,
-  name: null,
-})
+const keys = {
+  isLoggedIn: 'isLoggedIn',
+  name: 'name',
+}
+
+export const initialState = Immutable.fromJS({})
+  .set(keys.isLoggedIn, false)
+  .set(keys.name, null)
 
 export default class UserState {
   constructor(state) {
@@ -11,9 +15,9 @@ export default class UserState {
   }
 
   getState = () => this.state
-  isLoggedIn = () => this.state.isLoggedIn
-  getName = () => this.state.name
+  isLoggedIn = () => this.state.get(keys.isLoggedIn)
+  getName = () => this.state.get(keys.name)
 
-  withName = name => new UserState(Object.assign({}, this.state, { name }))
-  withIsLoggedIn = isLoggedIn => new UserState(Object.assign({}, this.state, { isLoggedIn }))
+  withName = name => new UserState(this.state.set(keys.name, name))
+  withIsLoggedIn = isLoggedIn => new UserState(this.state.set(keys.isLoggedIn, isLoggedIn))
 }
