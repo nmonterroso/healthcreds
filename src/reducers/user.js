@@ -9,7 +9,7 @@ export default function user(state = initialState, action) {
         .withIsLoggedIn(true)
         .getState()
     case actionTypes.LOGOUT_SUCCESS:
-      return new User(initialState)
+      return new User(initialState).getState()
     default:
       return state
   }
