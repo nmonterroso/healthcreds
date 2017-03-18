@@ -6,13 +6,27 @@ import Login from './Login'
 import Header from './header/Header'
 import UserState from '../reducers/models/UserState'
 
-const App = ({ user }) => (
-  <div>
-    <Header />
-    {user.isLoggedIn() ? <Route path="/" component={Home} /> : <Redirect to="/login" />}
-    <Route path="/login" component={Login} />
-  </div>
-)
+const App = ({ user }) => {
+  const paths = []
+
+  if (user.isLoggedIn()) {
+    paths.push(
+      <Route path="/" component={Home} />,
+    )
+  } else {
+    paths.push(<Redirect to="/login" />)
+  }
+
+  paths.push(<Route path="/login" component={Login} />)
+
+  return (
+    <div>
+      <Header />
+      {paths}
+    </div>
+  )
+}
+
 
 App.propTypes = {
   user: React.PropTypes.instanceOf(UserState).isRequired,
