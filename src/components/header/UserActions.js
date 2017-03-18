@@ -13,14 +13,6 @@ class UserActions extends React.Component {
     logout: React.PropTypes.func.isRequired,
   }
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      displaySettings: false,
-    }
-  }
-
   onLogout = () => {
     this.props.logout()
   }
@@ -32,15 +24,15 @@ class UserActions extends React.Component {
 
     const menuIcon = (
       <IconButton>
-        <SettingsIcon
-          onClick={this.onSettingsClicked}
-        />
+        <SettingsIcon />
       </IconButton>
     )
 
     return (
       <IconMenu
         iconButtonElement={menuIcon}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        targetOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
         <MenuItem
           onTouchTap={this.onLogout}

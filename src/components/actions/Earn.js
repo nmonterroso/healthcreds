@@ -9,7 +9,7 @@ const Button = styled(styles.IconButton)`
 
 class Earn extends React.Component {
   onEarn = () => {
-    console.log('earning a workout cred!')
+    console.log('earning a workout cred')
   }
 
   render() {
