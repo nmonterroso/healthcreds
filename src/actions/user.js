@@ -37,3 +37,12 @@ export function logout() {
       .catch(() => dispatch(createAction(actionTypes.LOGOUT_FAILURE)))
   }
 }
+
+export function updateUserProfile(userData) {
+  return (dispatch) => {
+    dispatch(createAction(actionTypes.UPDATE_PROFILE_REQUEST))
+    return backend.updateUserData(userData)
+      .then(() => dispatch(createAction(actionTypes.UPDATE_PROFILE_SUCCESS)))
+      .catch(() => dispatch(createAction(actionTypes.UPDATE_PROFILE_FAILURE)))
+  }
+}
