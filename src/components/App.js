@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
+import _ from 'lodash'
 import Home from './Home'
 import Login from './Login'
 import Header from './header/Header'
@@ -11,13 +12,13 @@ const App = ({ user }) => {
 
   if (user.isLoggedIn()) {
     paths.push(
-      <Route path="/" component={Home} />,
+      <Route path="/" key={_.uniqueId('homeRoute')} component={Home} />,
     )
   } else {
-    paths.push(<Redirect to="/login" />)
+    paths.push(<Redirect key={_.uniqueId('loginRedirect')} to="/login" />)
   }
 
-  paths.push(<Route path="/login" component={Login} />)
+  paths.push(<Route key={_.uniqueId('loginRoute')} path="/login" component={Login} />)
 
   return (
     <div>
