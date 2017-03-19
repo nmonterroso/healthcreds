@@ -38,7 +38,7 @@ class FirebaseBackend {
     this.firebase.auth().currentUser
       .updateProfile({
         displayName: userData.getName(),
-        photoUrl: userData.getProfileImage(),
+        photoURL: userData.getProfileImage(),
       })
 }
 
