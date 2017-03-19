@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import UserData from '../models/UserData'
 
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -17,19 +18,28 @@ class FirebaseBackend {
   authenticate = (username, password) =>
     this.firebase.auth()
       .signInWithEmailAndPassword(username, password)
-      .then(user => user.displayName)
+      .then(user => new UserData(user.displayName, user.photoURL))
 
   restoreSession = () =>
     this.initializePromise
       .then((user) => {
-        const loggedIn = user !== null
-        const name = loggedIn ? user.displayName : null
-        return [loggedIn, name]
+        if (user === null) {
+          return null
+        }
+
+        return new UserData(user.displayName, user.photoURL)
       })
 
   logout = () =>
     this.firebase.auth()
       .signOut()
+
+  updateUserData = userData =>
+    this.firebase.auth().currentUser
+      .updateProfile({
+        displayName: userData.getName(),
+        photoUrl: userData.getProfileImage(),
+      })
 }
 
 const initializePromise = new Promise((resolve) => {

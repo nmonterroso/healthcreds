@@ -7,7 +7,7 @@ export function login(username, password) {
   return (dispatch) => {
     dispatch(createAction(actionTypes.LOGIN_REQUEST))
     return backend.authenticate(username, password)
-      .then(name => dispatch(createAction(actionTypes.LOGIN_SUCCESS, { name })))
+      .then(userData => dispatch(createAction(actionTypes.LOGIN_SUCCESS, { userData })))
       .catch(() => dispatch(createAction(actionTypes.LOGIN_FAILURE)))
   }
 }
@@ -16,9 +16,9 @@ export function restoreSession() {
   return (dispatch) => {
     dispatch(createAction(actionTypes.RESTORE_SESSION_REQUEST))
     return backend.restoreSession()
-      .then(([loggedIn, name]) => {
-        if (loggedIn) {
-          dispatch(createAction(actionTypes.LOGIN_SUCCESS, { name }))
+      .then((userData) => {
+        if (userData !== null) {
+          dispatch(createAction(actionTypes.LOGIN_SUCCESS, { userData }))
         }
       })
   }
