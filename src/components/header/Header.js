@@ -1,9 +1,9 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar'
-import UserActions from './UserActions'
+import UserMenu from './UserMenu'
 
 const Header = () => {
-  const userActions = (<UserActions />)
+  const userMenu = (<UserMenu />)
 
   return (
     <div>
@@ -12,7 +12,7 @@ const Header = () => {
         iconStyleLeft={{
           display: 'none',
         }}
-        iconElementRight={userActions}
+        iconElementRight={userMenu}
       />
     </div>
   )

@@ -9,7 +9,7 @@ import UserState from '../../reducers/models/UserState'
 import LogoutIcon from '../../icons/LogoutIcon'
 import { logout } from '../../actions/user'
 
-class UserActions extends React.Component {
+class UserMenu extends React.Component {
   static propTypes = {
     user: React.PropTypes.instanceOf(UserState).isRequired,
     logout: React.PropTypes.func.isRequired,
@@ -61,4 +61,4 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
   dispatchProps,
 )
 
-export default connect(stateToProps, dispatchToProps, mergeProps)(UserActions)
+export default connect(stateToProps, dispatchToProps, mergeProps)(UserMenu)
