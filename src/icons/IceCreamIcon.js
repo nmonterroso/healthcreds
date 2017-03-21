@@ -1,6 +1,6 @@
 import React from 'react'
 import SvgIcon from 'material-ui/SvgIcon'
-import * as styles from './styles'
+import * as styles from '../components/actions/styles'
 
 const IceCreamIcon = () => (
   <SvgIcon

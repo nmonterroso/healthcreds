@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import BurgerAndFriesIcon from './BurgerAndFriesIcon'
-import IceCreamIcon from './IceCreamIcon'
+import BurgerAndFriesIcon from '../../icons/BurgerAndFriesIcon'
+import IceCreamIcon from '../../icons/IceCreamIcon'
 import * as styles from './styles'
 
 const stateToProps = state => ({ points: state.points })
