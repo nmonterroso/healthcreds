@@ -4,7 +4,7 @@ import points from './points'
 
 const rootReducer = combineReducers({
   user,
-  points
+  points,
 })
 
 export default rootReducer

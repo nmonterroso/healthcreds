@@ -5,14 +5,14 @@ export const initialState = {
   costs: {
     full: 5,
     snack: 3,
-  }
+  },
 }
 
 export default function points(state = initialState, action) {
   switch (action.type) {
     case actionTypes.POINT_ADD_REQUEST:
-      return state;
+      return state
     default:
-      return state;
+      return state
   }
 }
