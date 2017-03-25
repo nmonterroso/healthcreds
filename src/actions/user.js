@@ -26,7 +26,7 @@ export function restoreSession() {
 
 export function logout() {
   return (dispatch, getState) => {
-    const user = new UserState(getState().user)
+    const user = getState().user
     if (!user.isLoggedIn()) {
       return Promise.resolve()
     }

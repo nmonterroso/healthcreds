@@ -52,13 +52,4 @@ class UserMenu extends React.Component {
 
 const stateToProps = state => ({ user: state.user })
 const dispatchToProps = { logout }
-const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign(
-  {},
-  ownProps,
-  {
-    user: new UserState(stateProps.user),
-  },
-  dispatchProps,
-)
-
-export default connect(stateToProps, dispatchToProps, mergeProps)(UserMenu)
+export default connect(stateToProps, dispatchToProps)(UserMenu)

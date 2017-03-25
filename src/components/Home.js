@@ -19,6 +19,4 @@ Home.propTypes = {
 }
 
 const stateToProps = state => ({ user: state.user })
-const mergeProps = stateProps => ({ user: new UserState(stateProps.user) })
-
-export default connect(stateToProps, null, mergeProps)(Home)
+export default connect(stateToProps)(Home)

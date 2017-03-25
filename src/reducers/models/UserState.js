@@ -1,27 +1,23 @@
-import Immutable from 'immutable'
+import { Record } from 'immutable'
 
 const keys = {
-  isLoggedIn: 'isLoggedIn',
-  name: 'name',
-  profileImage: 'profileImage',
+  isLoggedIn: '__isLoggedIn',
+  name: '__name',
+  profileImage: '__profileImage',
 }
 
-export const initialState = Immutable.fromJS({})
-  .set(keys.isLoggedIn, false)
-  .set(keys.name, null)
-  .set(keys.profileImage, null)
+const initialState = {
+  [keys.isLoggedIn]: false,
+  [keys.name]: null,
+  [keys.profileImage]: null,
+}
 
-export default class UserState {
-  constructor(state) {
-    this.state = state
-  }
+export default class UserState extends Record(initialState) {
+  isLoggedIn = () => this.get(keys.isLoggedIn)
+  getName = () => this.get(keys.name)
+  getProfileImage = () => this.get(keys.profileImage)
 
-  getState = () => this.state
-  isLoggedIn = () => this.state.get(keys.isLoggedIn)
-  getName = () => this.state.get(keys.name)
-  getProfileImage = () => this.state.get(keys.profileImage)
-
-  withName = name => new UserState(this.state.set(keys.name, name))
-  withIsLoggedIn = isLoggedIn => new UserState(this.state.set(keys.isLoggedIn, isLoggedIn))
-  withProfileImage = profileImage => new UserState(this.state.set(keys.profileImage, profileImage))
+  withName = name => new UserState(this.set(keys.name, name))
+  withIsLoggedIn = isLoggedIn => new UserState(this.set(keys.isLoggedIn, isLoggedIn))
+  withProfileImage = profileImage => new UserState(this.set(keys.profileImage, profileImage))
 }
